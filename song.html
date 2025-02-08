@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Streamer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #00bcd4; /* Cyan color */
+        }
+
+        header {
+            background: #00bcd4; /* Cyan color */
+            color: #000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .song-item {
+            background: #222;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .song-item:hover {
+            background: #333;
+        }
+
+        .play-button {
+            background: #00bcd4; /* Cyan color */
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .play-button:hover {
+            background: #0097a7; /* Darker cyan */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #00bcd4; /* Cyan color */
+            color: #000;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Music Streamer</h1>
+        <p>Access trending songs from around the world</p>
+    </header>
+
+    <main>
+        <h2>Trending Songs</h2>
+        <ul class="song-list" id="songList">
+            <li class="song-item">
+                <span>Song Title 1 - Artist 1</span>
+                <button class="play-button" onclick="playSong('song1.mp3')">Play</button>
+            </li>
+            <li class="song-item">
+                <span>Song Title 2 - Artist 2</span>
+                <button class="play-button" onclick="playSong('song2.mp3')">Play</button>
+            </li>
+            <li class="song-item">
+                <span>Song Title 3 - Artist 3</span>
+                <button class="play-button" onclick="playSong('song3.mp3')">Play</button>
+            </li>
+            <li class="song-item">
+                <span>Song Title 4 - Artist 4</span>
+                <button class="play-button" onclick="playSong('song4.mp3')">Play</button>
+            </li>
+            <li class="song-item">
+                <span>Song Title 5 - Artist 5</span>
+                <button class="play-button" onclick="playSong('song5.mp3')">Play</button>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Music Streamer</p>
+    </footer>
+
+    <audio id="audioPlayer" controls style="display:none;"></audio>
+
+    <script>
+        function playSong(song) {
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.src = song;
+            audioPlayer.play();
+        }
+    </script>
+</body>
+</html>
