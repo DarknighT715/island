@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Info Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff4500;
+            padding: 15px;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        .car-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .car-item {
+            background: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>Car Info Hub</header>
+    <div class="container">
+        <h2>Add a New Car</h2>
+        <input type="text" id="carName" placeholder="Car Name">
+        <input type="text" id="carDetails" placeholder="Car Details">
+        <button onclick="addCar()">Add Car</button>
+        
+        <h2>Search Cars</h2>
+        <input type="text" id="search" onkeyup="searchCars()" placeholder="Search for cars...">
+        
+        <div class="car-list" id="carList"></div>
+    </div>
+    
+    <script>
+        let cars = [];
+
+        function addCar() {
+            let name = document.getElementById('carName').value;
+            let details = document.getElementById('carDetails').value;
+            if (name && details) {
+                cars.push({ name, details });
+                displayCars();
+                document.getElementById('carName').value = '';
+                document.getElementById('carDetails').value = '';
+            }
+        }
+
+        function displayCars() {
+            let carList = document.getElementById('carList');
+            carList.innerHTML = '';
+            cars.forEach((car, index) => {
+                carList.innerHTML += `<div class='car-item'><strong>${car.name}</strong>: ${car.details}</div>`;
+            });
+        }
+
+        function searchCars() {
+            let query = document.getElementById('search').value.toLowerCase();
+            let filteredCars = cars.filter(car => car.name.toLowerCase().includes(query));
+            let carList = document.getElementById('carList');
+            carList.innerHTML = '';
+            filteredCars.forEach(car => {
+                carList.innerHTML += `<div class='car-item'><strong>${car.name}</strong>: ${car.details}</div>`;
+            });
+        }
+    </script>
+</body>
+</html>
